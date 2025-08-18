@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enhanced 3D Model Viewer</title>
+  <title>3D Model Viewer - IPFS Integration</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script type="module" src="Bottle.glb"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <style>
     * {
       margin: 0;
@@ -33,7 +33,7 @@
       100% { background-position: 0% 50%; }
     }
     
-    header {
+    .header {
       text-align: center;
       margin-bottom: 30px;
       width: 100%;
@@ -58,6 +58,28 @@
       max-width: 600px;
       margin: 0 auto;
       line-height: 1.6;
+    }
+    
+    .ipfs-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+    
+    .ipfs-info i {
+      color: #65c4c8;
+    }
+    
+    .ipfs-info a {
+      color: #65c4c8;
+      text-decoration: none;
+      font-weight: bold;
+      word-break: break-all;
     }
     
     .container {
@@ -208,6 +230,25 @@
       margin-top: auto;
     }
     
+    .ar-button {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(to right, #1a2a6c, #b21f1f);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+    
     @media (max-width: 768px) {
       .container {
         border-radius: 15px;
@@ -228,26 +269,37 @@
       .specs {
         grid-template-columns: 1fr;
       }
+      
+      .model-viewer-container {
+        height: 60vh;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Interactive 3D Model Viewer</h1>
-    <p class="subtitle">Explore our detailed 3D character model with AR capabilities and intuitive controls</p>
-  </header>
+  <div class="header">
+    <h1>3D Character Model Viewer</h1>
+    <p class="subtitle">Interactive 3D model loaded directly from IPFS with AR capabilities</p>
+    <div class="ipfs-info">
+      <i class="fas fa-database"></i>
+      <span>IPFS CID: </span>
+      <a href="https://ipfs.io/ipfs/bafybeifpdagodhw5gtxguu4lndclfqriyi56btcmu7ih77nja2mse5sxaa" target="_blank">
+        bafybeifpdagodhw5gtxguu4lndclfqriyi56btcmu7ih77nja2mse5sxaa
+      </a>
+    </div>
+  </div>
   
   <div class="container">
     <div class="model-viewer-container">
       <model-viewer 
-        src="Pose.glb" 
+        src="https://ipfs.io/ipfs/bafybeifpdagodhw5gtxguu4lndclfqriyi56btcmu7ih77nja2mse5sxaa" 
         ar 
         ar-modes="webxr scene-viewer quick-look" 
         camera-controls 
-        tone-mapping="neutral" 
+        tone-mapping="neutral"
         shadow-intensity="1.19" 
         autoplay 
-        environment-image="neutral" 
+        environment-image="https://modelviewer.dev/shared-assets/environments/whipple_creek_regional_park_04_1k.hdr"
         exposure="0.72" 
         shadow-softness="1" 
         camera-orbit="-59.24deg 94.06deg 3.29m" 
@@ -293,10 +345,10 @@
           <p>Rigged: Yes</p>
         </div>
         <div class="spec-item">
-          <h4>File Information</h4>
-          <p>Format: glTF 2.0</p>
+          <h4>IPFS Information</h4>
+          <p>CID: bafybeifpdagodhw5gtxguu4lndclfqriyi56btcmu7ih77nja2mse5sxaa</p>
           <p>Size: 8.7 MB</p>
-          <p>Version: 1.2</p>
+          <p>Format: glTF 2.0</p>
         </div>
         <div class="spec-item">
           <h4>Compatibility</h4>
@@ -309,42 +361,59 @@
   </div>
   
   <footer>
-    <p>© 2023 3D Model Viewer | Created with &lt;model-viewer&gt; | All models are for demonstration purposes</p>
+    <p>© 2023 IPFS Model Viewer | Created with &lt;model-viewer&gt; | Model hosted on IPFS</p>
   </footer>
   
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Simulate loading progress
+      const modelViewer = document.querySelector('model-viewer');
       const progressBar = document.querySelector('.update-bar');
-      let progress = 0;
       
+      // Simulate loading progress
+      let progress = 0;
       const loadingInterval = setInterval(() => {
         progress += Math.random() * 10;
         progressBar.style.width = `${progress}%`;
         
         if (progress >= 100) {
           clearInterval(loadingInterval);
-          document.querySelector('.progress-bar').classList.add('hide');
         }
-      }, 200);
+      }, 300);
+      
+      // Listen for actual model load event
+      modelViewer.addEventListener('load', () => {
+        clearInterval(loadingInterval);
+        progressBar.style.width = '100%';
+        setTimeout(() => {
+          document.querySelector('.progress-bar').classList.add('hide');
+        }, 500);
+      });
       
       // Button functionality
       document.getElementById('reset-view').addEventListener('click', () => {
-        const modelViewer = document.querySelector('model-viewer');
         modelViewer.cameraOrbit = '-59.24deg 94.06deg 3.29m';
         modelViewer.fieldOfView = '20.27deg';
       });
       
       document.getElementById('env-neutral').addEventListener('click', () => {
-        document.querySelector('model-viewer').environmentImage = 'neutral';
+        modelViewer.environmentImage = 'neutral';
       });
       
       document.getElementById('env-hall').addEventListener('click', () => {
-        document.querySelector('model-viewer').environmentImage = 'https://modelviewer.dev/shared-assets/environments/whipple_creek_regional_park_04_1k.hdr';
+        modelViewer.environmentImage = 'https://modelviewer.dev/shared-assets/environments/whipple_creek_regional_park_04_1k.hdr';
       });
       
       document.getElementById('env-sunset').addEventListener('click', () => {
-        document.querySelector('model-viewer').environmentImage = 'https://modelviewer.dev/shared-assets/environments/spruit_sunrise_1k.hdr';
+        modelViewer.environmentImage = 'https://modelviewer.dev/shared-assets/environments/spruit_sunrise_1k.hdr';
+      });
+      
+      // View mode buttons
+      document.getElementById('orbit-control').addEventListener('click', () => {
+        modelViewer.cameraOrbit = '-59.24deg 94.06deg 3.29m';
+      });
+      
+      document.getElementById('first-person').addEventListener('click', () => {
+        modelViewer.cameraOrbit = '0deg 90deg 1.5m';
       });
     });
   </script>
