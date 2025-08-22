@@ -17,6 +17,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #f8f8f8;
         }
 
         /* Top Banner */
@@ -46,6 +47,9 @@
             background: white;
             padding: 15px 0;
             border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .container {
@@ -80,6 +84,11 @@
             text-decoration: none;
             color: #333;
             font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f0b90b;
         }
 
         .header-icons {
@@ -91,6 +100,11 @@
         .header-icons a {
             text-decoration: none;
             color: #333;
+            transition: color 0.3s;
+        }
+
+        .header-icons a:hover {
+            color: #f0b90b;
         }
 
         /* Navigation Menu */
@@ -105,12 +119,19 @@
             list-style: none;
             gap: 40px;
             justify-content: flex-start;
+            flex-wrap: wrap;
         }
 
         .main-nav a {
             text-decoration: none;
             color: #333;
             font-weight: 400;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .main-nav a:hover {
+            color: #f0b90b;
         }
 
         .warehouse-sale {
@@ -128,6 +149,36 @@
         .breadcrumb a {
             color: #666;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #f0b90b;
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            margin-bottom: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            padding: 4px;
+            width: fit-content;
+        }
+
+        .view-toggle button {
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .view-toggle button.active {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         /* Product Section */
@@ -173,21 +224,33 @@
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .wishlist-btn:hover {
+            background: #f8f8f8;
+            transform: scale(1.05);
         }
 
         .product-thumbnails {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             margin-top: 20px;
         }
 
         .thumbnail {
             width: 100%;
-            height: 200px;
+            height: 100px;
             object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         /* 3D Model Viewer Styles */
@@ -198,6 +261,7 @@
             border-radius: 8px;
             overflow: hidden;
             background: #f5f5f5;
+            display: block;
         }
 
         model-viewer {
@@ -227,10 +291,12 @@
             border-radius: 50%;
             cursor: pointer;
             font-size: 16px;
+            transition: all 0.3s;
         }
 
         .viewer-controls button:hover {
             background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
         }
 
         .progress-bar {
@@ -272,6 +338,62 @@
             gap: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .ar-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: none;
+            position: relative;
+        }
+
+        .gallery-main {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 5;
+        }
+
+        .gallery-nav button {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-nav button:hover {
+            background: white;
+            transform: scale(1.1);
         }
 
         /* Product Info */
@@ -321,6 +443,12 @@
         .view-plans {
             color: #f0b90b;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .view-plans:hover {
+            color: #d6a10b;
+            text-decoration: underline;
         }
 
         /* Customization */
@@ -343,6 +471,11 @@
         .fabric-option {
             text-align: center;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .fabric-option:hover {
+            transform: translateY(-5px);
         }
 
         .fabric-swatch {
@@ -351,10 +484,12 @@
             border-radius: 8px;
             border: 2px solid transparent;
             margin-bottom: 5px;
+            transition: all 0.3s;
         }
 
         .fabric-option.selected .fabric-swatch {
             border-color: #000;
+            transform: scale(1.1);
         }
 
         .fabric-name {
@@ -385,6 +520,7 @@
             align-items: center;
             border: 1px solid #ddd;
             border-radius: 4px;
+            overflow: hidden;
         }
 
         .quantity-btn {
@@ -393,6 +529,11 @@
             padding: 10px 15px;
             cursor: pointer;
             font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: #f0f0f0;
         }
 
         .quantity-input {
@@ -400,6 +541,7 @@
             text-align: center;
             width: 60px;
             padding: 10px;
+            font-size: 16px;
         }
 
         .add-to-cart {
@@ -413,6 +555,13 @@
             font-weight: 600;
             flex: 1;
             max-width: 300px;
+            transition: all 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .product-details {
@@ -426,11 +575,19 @@
             margin-bottom: 15px;
             padding: 15px 0;
             border-bottom: 1px solid #eee;
+            transition: background 0.3s;
+        }
+
+        .detail-item:hover {
+            background: #f9f9f9;
         }
 
         .detail-icon {
             width: 24px;
             height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .share-section {
@@ -446,9 +603,15 @@
         .share-btn {
             background: none;
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 8px 12px;
             border-radius: 4px;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .share-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
         }
 
         /* Description Section */
@@ -464,6 +627,13 @@
             align-items: center;
             cursor: pointer;
             padding: 15px 0;
+            transition: background 0.3s;
+            border-radius: 8px;
+            padding-left: 15px;
+        }
+
+        .section-header:hover {
+            background: #f9f9f9;
         }
 
         .section-header h3 {
@@ -472,6 +642,69 @@
 
         .toggle-icon {
             font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .section-content {
+            padding: 15px;
+            display: none;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        /* Customer Reviews */
+        .reviews-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .review {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .review-content {
+            flex: 1;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+        }
+
+        .review-date {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .review-rating {
+            color: #f0b90b;
+            margin: 5px 0;
         }
 
         /* Chat Widget */
@@ -485,6 +718,12 @@
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: all 0.3s;
+        }
+
+        .chat-widget:hover {
+            transform: scale(1.1);
         }
 
         .offline-widget {
@@ -498,9 +737,27 @@
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             font-size: 14px;
+            z-index: 99;
+            transition: all 0.3s;
+        }
+
+        .offline-widget:hover {
+            transform: translateY(-5px);
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .product-section {
+                gap: 40px;
+            }
+            
+            .main-nav ul {
+                gap: 25px;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+
         @media (max-width: 768px) {
             .product-section {
                 grid-template-columns: 1fr;
@@ -509,6 +766,14 @@
             
             .nav-links, .main-nav ul {
                 display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
             }
             
             .quantity-cart {
@@ -520,8 +785,62 @@
                 max-width: none;
             }
             
-            .model-viewer-container {
+            .model-viewer-container, .gallery-main {
                 height: 400px;
+            }
+            
+            .product-thumbnails {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .thumbnail {
+                height: 80px;
+            }
+            
+            .fabric-options {
+                justify-content: center;
+            }
+            
+            .review-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .header-icons {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid #eee;
+            }
+            
+            .product-thumbnails {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .viewer-controls {
+                bottom: 70px;
+            }
+            
+            .ar-button {
+                bottom: 70px;
+            }
+            
+            .gallery-nav {
+                padding: 0 10px;
+            }
+            
+            .gallery-nav button {
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
@@ -529,7 +848,7 @@
 <body>
     <!-- Top Banner -->
     <div class="top-banner">
-        Pan India Shipping
+        Pan India Shipping | Free Delivery | 30-Day Returns
         <button class="close-banner">×</button>
     </div>
 
@@ -586,6 +905,13 @@
         <!-- Product Section -->
         <section class="product-section">
             <div class="product-images">
+                <!-- View Toggle -->
+                <div class="view-toggle">
+                    <button id="view-3d" class="active">3D View</button>
+                    <button id="view-gallery">Image Gallery</button>
+                </div>
+                
+                <!-- 3D Viewer -->
                 <div class="model-viewer-container">
                     <model-viewer 
                         src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
@@ -621,18 +947,33 @@
                     </div>
                 </div>
                 
+                <!-- Image Gallery -->
+                <div class="image-gallery">
+                    <div class="gallery-main">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRlc3MgQ3VydmVkIFNvZmEgLSBNYWluIFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Tess Curved Sofa Main View" id="gallery-main-img">
+                        <div class="gallery-nav">
+                            <button id="gallery-prev"><i class="fas fa-chevron-left"></i></button>
+                            <button id="gallery-next"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="new-badge" style="top: 60px;">GALLERY</div>
+                    <button class="wishlist-btn">♡</button>
+                </div>
+                
+                <!-- Thumbnails -->
                 <div class="product-thumbnails">
                     <div class="thumbnail" data-view="default">
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRlZmF1bHQgVmlldzwvdGV4dD4KPC9zdmc+" alt="Default View">
                     </div>
                     <div class="thumbnail" data-view="top">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRvcCBWaWV3PC90ZXh0Pgo8L3N2Zz4=" alt="Top View">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9y=" alt="Top View">
                     </div>
                     <div class="thumbnail" data-view="front">
                         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyb250IFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Front View">
                     </div>
                     <div class="thumbnail" data-view="side">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpZGUgVmlldzwvdGV4dD4KPC9zdmc+" alt="Side View">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZ illbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpZGUgVmlldzwvdGV4dD4KPC9zdmc+" alt="Side View">
                     </div>
                 </div>
             </div>
@@ -742,14 +1083,73 @@
             </div>
         </section>
 
+        <!-- Description Section -->
         <div class="description-section">
-            <div class="section-header">
+            <div class="section-header" id="description-header">
                 <h3>Description</h3>
                 <span class="toggle-icon">+</span>
             </div>
-            <div class="section-header">
+            <div class="section-content" id="description-content">
+                <p>The Tess Curved Sofa is a masterpiece of modern design, combining elegant curves with exceptional comfort. This stunning piece features a unique curved silhouette that creates an inviting atmosphere in any living space.</p>
+                <p>Expertly crafted with a solid wood frame and high-density foam cushioning, the Tess Sofa offers both durability and plush comfort. The sleek tapered legs add a touch of mid-century modern elegance while providing sturdy support.</p>
+                <p>Available in a range of premium fabrics, this sofa can be customized to match your unique style and decor preferences.</p>
+            </div>
+            
+            <div class="section-header" id="features-header">
                 <h3>Key Features</h3>
                 <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content" id="features-content">
+                <ul>
+                    <li>Elegant curved design with clean lines</li>
+                    <li>Solid wood frame for durability</li>
+                    <li>High-density foam cushioning for comfort</li>
+                    <li>Premium fabric options available</li>
+                    <li>Tapered legs with metal accents</li>
+                    <li>Expert craftsmanship with attention to detail</li>
+                    <li>Modular design for flexible configuration</li>
+                </ul>
+            </div>
+            
+            <div class="section-header" id="specs-header">
+                <h3>Specifications</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-content" id="specs-content">
+                <p><strong>Dimensions:</strong> 220cm (W) x 95cm (D) x 75cm (H)</p>
+                <p><strong>Seat Height:</strong> 45cm</p>
+                <p><strong>Material:</strong> Solid wood frame, high-density foam, premium fabric</p>
+                <p><strong>Weight Capacity:</strong> 300kg</p>
+                <p><strong>Assembly:</strong> Required (tools included)</p>
+            </div>
+        </div>
+        
+        <!-- Customer Reviews Section -->
+        <div class="reviews-section">
+            <h2>Customer Reviews</h2>
+            
+            <div class="review">
+                <div class="review-avatar">R</div>
+                <div class="review-content">
+                    <div class="review-header">
+                        <div class="reviewer-name">Rahul Sharma</div>
+                        <div class="review-date">October 15, 2023</div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p>Absolutely love this sofa! The curved design is not only beautiful but incredibly comfortable. The fabric quality is exceptional and it looks even better in person than in the photos.</p>
+                </div>
+            </div>
+            
+            <div class="review">
+                <div class="review-avatar">P</div>
+                <div class="review-content">
+                    <div class="review-header">
+                        <div class="reviewer-name">Priya Patel</div>
+                        <div class="review-date">September 28, 2023</div>
+                    </div>
+                    <div class="review-rating">★★★★☆</div>
+                    <p>The Tess sofa has transformed our living room. It's comfortable for lounging and stylish enough for entertaining. The only reason I'm giving 4 stars is because assembly took a bit longer than expected.</p>
+                </div>
             </div>
         </div>
     </main>
@@ -790,10 +1190,22 @@
             document.querySelector('.top-banner').style.display = 'none';
         });
 
-        document.querySelectorAll('.section-header').forEach(header => {
+        // Toggle sections
+        const sections = [
+            { header: 'description-header', content: 'description-content' },
+            { header: 'features-header', content: 'features-content' },
+            { header: 'specs-header', content: 'specs-content' }
+        ];
+
+        sections.forEach(section => {
+            const header = document.getElementById(section.header);
+            const content = document.getElementById(section.content);
+            const icon = header.querySelector('.toggle-icon');
+            
             header.addEventListener('click', function() {
-                const icon = this.querySelector('.toggle-icon');
-                icon.textContent = icon.textContent === '+' ? '−' : '+';
+                const isOpen = content.style.display === 'block';
+                content.style.display = isOpen ? 'none' : 'block';
+                icon.textContent = isOpen ? '+' : '−';
             });
         });
 
@@ -856,6 +1268,56 @@
                 }
             });
         });
+
+        // View toggle functionality
+        const view3DButton = document.getElementById('view-3d');
+        const viewGalleryButton = document.getElementById('view-gallery');
+        const modelViewerContainer = document.querySelector('.model-viewer-container');
+        const imageGallery = document.querySelector('.image-gallery');
+        
+        view3DButton.addEventListener('click', function() {
+            this.classList.add('active');
+            viewGalleryButton.classList.remove('active');
+            modelViewerContainer.style.display = 'block';
+            imageGallery.style.display = 'none';
+        });
+        
+        viewGalleryButton.addEventListener('click', function() {
+            this.classList.add('active');
+            view3DButton.classList.remove('active');
+            modelViewerContainer.style.display = 'none';
+            imageGallery.style.display = 'block';
+        });
+
+        // Image gallery navigation
+        const galleryImages = [
+            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRlc3MgQ3VydmVkIFNvZmEgLSBNYWluIFZpZXc8L3RleHQ+Cjwvc3ZnPg==',
+            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNvZmEgRnJvbSBBYm92ZTwvdGV4dD4KPC9zdmc+',
+            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNvZmEgSW4gTGl2aW5nIFJvb208L3RleHQ+Cjwvc3ZnPg==',
+            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNsb3NldXAgRGV0YWlsPC90ZXh0Pgo8L3N2Zz4='
+        ];
+        
+        let currentImageIndex = 0;
+        const galleryMainImg = document.getElementById('gallery-main-img');
+        const galleryPrev = document.getElementById('gallery-prev');
+        const galleryNext = document.getElementById('gallery-next');
+        
+        function updateGalleryImage() {
+            galleryMainImg.src = galleryImages[currentImageIndex];
+        }
+        
+        galleryPrev.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateGalleryImage();
+        });
+        
+        galleryNext.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateGalleryImage();
+        });
+        
+        // Initialize gallery
+        updateGalleryImage();
     </script>
 </body>
 </html>
