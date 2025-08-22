@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tess Curved Sofa - AR Configurator - DTALE MODERN</title>
+    <title>Tess Curved Sofa - DTALE MODERN</title>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -91,7 +93,7 @@
             color: #333;
         }
 
-        /* Main Navigation */
+        /* Navigation Menu */
         .main-nav {
             background: white;
             padding: 15px 0;
@@ -136,140 +138,143 @@
             padding: 40px 0;
         }
 
-        /* AR Viewer Container */
-        .ar-viewer-container {
+        .product-images {
             position: relative;
-            background: #f8f8f8;
-            border-radius: 12px;
-            overflow: hidden;
         }
 
-        .ar-viewer {
+        .main-image {
             width: 100%;
             height: 500px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            border-radius: 12px;
-        }
-
-        .model-placeholder {
-            width: 80%;
-            height: 80%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px dashed rgba(255, 255, 255, 0.3);
+            object-fit: cover;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            text-align: center;
+            position: relative;
         }
 
-        .ar-controls {
+        .new-badge {
             position: absolute;
             top: 20px;
             left: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .ar-badge {
-            background: rgba(0, 0, 0, 0.8);
+            background: #000;
             color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
+            padding: 5px 10px;
             font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            border-radius: 3px;
+            z-index: 10;
         }
 
-        .ar-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .ar-btn {
-            background: rgba(255, 255, 255, 0.9);
+        .wishlist-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
             border: none;
             padding: 10px;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 10;
         }
 
-        .ar-btn:hover {
-            background: white;
-            transform: scale(1.1);
-        }
-
-        .view-modes {
-            display: flex;
+        .product-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin-top: 20px;
         }
 
-        .view-mode-btn {
-            flex: 1;
-            background: white;
-            border: 2px solid #eee;
-            padding: 12px 16px;
+        .thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 8px;
             cursor: pointer;
-            text-align: center;
-            font-weight: 600;
-            transition: all 0.3s ease;
         }
 
-        .view-mode-btn.active {
+        /* 3D Model Viewer Styles */
+        .model-viewer-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            --progress-bar-color: transparent;
+        }
+
+        .viewer-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 50px;
+        }
+
+        .viewer-controls button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .viewer-controls button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 400px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .update-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .ar-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
             background: #000;
             color: white;
-            border-color: #000;
-        }
-
-        .view-mode-btn:hover {
-            border-color: #000;
-        }
-
-        /* Model Info Panel */
-        .model-info {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .model-specs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            font-size: 14px;
-        }
-
-        .spec-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .spec-label {
-            color: #666;
-        }
-
-        .spec-value {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
         }
 
-        /* Product Info (Right Side) */
+        /* Product Info */
         .product-info h1 {
             font-size: 32px;
             margin-bottom: 20px;
@@ -318,120 +323,56 @@
             text-decoration: none;
         }
 
-        /* AR Configuration Panel */
-        .ar-config-panel {
-            background: #f8f8f8;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .config-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .config-header h3 {
-            font-weight: 600;
-        }
-
-        .ar-icon {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 6px;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
         /* Customization */
         .customization {
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
-        .customization h4 {
+        .customization h3 {
             margin-bottom: 15px;
             font-weight: 600;
         }
 
         .fabric-options {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            display: flex;
             gap: 15px;
             margin: 15px 0;
+            flex-wrap: wrap;
         }
 
         .fabric-option {
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
         .fabric-swatch {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 8px;
             border: 2px solid transparent;
-            margin: 0 auto 8px;
-            transition: all 0.3s ease;
+            margin-bottom: 5px;
         }
 
         .fabric-option.selected .fabric-swatch {
             border-color: #000;
-            transform: scale(1.1);
-        }
-
-        .fabric-option:hover .fabric-swatch {
-            transform: scale(1.05);
         }
 
         .fabric-name {
-            font-size: 11px;
-            margin-bottom: 3px;
-            font-weight: 600;
+            font-size: 12px;
+            margin-bottom: 5px;
         }
 
         .made-to-order {
-            font-size: 10px;
+            font-size: 11px;
             color: #666;
         }
 
         .extra-cost {
             color: #28a745;
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        /* Real-time Updates Indicator */
-        .realtime-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: #28a745;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
             font-size: 12px;
-            margin-top: 15px;
-            width: fit-content;
         }
 
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
-
-        /* Quantity and Actions */
+        /* Quantity and Add to Cart */
         .quantity-cart {
             display: flex;
             align-items: center;
@@ -474,23 +415,6 @@
             max-width: 300px;
         }
 
-        .ar-experience-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            margin-top: 15px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
         .product-details {
             margin-top: 30px;
         }
@@ -507,6 +431,73 @@
         .detail-icon {
             width: 24px;
             height: 24px;
+        }
+
+        .share-section {
+            margin-top: 20px;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .share-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Description Section */
+        .description-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px 0;
+        }
+
+        .section-header h3 {
+            font-weight: 600;
+        }
+
+        .toggle-icon {
+            font-size: 20px;
+        }
+
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .offline-widget {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #ff9500;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-size: 14px;
         }
 
         /* Responsive Design */
@@ -528,13 +519,9 @@
             .add-to-cart {
                 max-width: none;
             }
-
-            .fabric-options {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .model-specs {
-                grid-template-columns: 1fr;
+            
+            .model-viewer-container {
+                height: 400px;
             }
         }
     </style>
@@ -598,66 +585,58 @@
 
         <!-- Product Section -->
         <section class="product-section">
-            <!-- AR Viewer Section -->
-            <div class="ar-viewer-container">
-                <div class="ar-viewer">
-                    <div class="ar-controls">
-                        <div class="ar-badge">
-                            🔮 AR Ready
+            <div class="product-images">
+                <div class="model-viewer-container">
+                    <model-viewer 
+                        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                        ar 
+                        ar-modes="webxr scene-viewer quick-look" 
+                        camera-controls 
+                        tone-mapping="neutral"
+                        shadow-intensity="1.19" 
+                        autoplay 
+                        environment-image="neutral"
+                        exposure="0.72" 
+                        shadow-softness="1" 
+                        camera-orbit="0deg 75deg 3m" 
+                        field-of-view="20.27deg"
+                        alt="Tess Curved Sofa 3D Model">
+                        
+                        <div class="progress-bar" slot="progress-bar">
+                            <div class="update-bar"></div>
                         </div>
-                        <div class="ar-actions">
-                            <button class="ar-btn" title="Fullscreen">⛶</button>
-                            <button class="ar-btn" title="Reset View">↻</button>
-                            <button class="ar-btn" title="Share">↗</button>
-                        </div>
-                    </div>
-                    <div class="model-placeholder">
-                        <div>
-                            <div style="font-size: 24px; margin-bottom: 10px;">🪑</div>
-                            <div>Interactive 3D Model</div>
-                            <div style="font-size: 14px; opacity: 0.8; margin-top: 5px;">Click to interact • AR ready</div>
-                        </div>
+                        
+                        <button slot="ar-button" class="ar-button">
+                            <i class="fas fa-mobile-alt"></i> View in AR
+                        </button>
+                    </model-viewer>
+                    
+                    <div class="new-badge">3D VIEW</div>
+                    <button class="wishlist-btn">♡</button>
+                    
+                    <div class="viewer-controls">
+                        <button id="orbit-control" title="Orbit Mode"><i class="fas fa-sync"></i></button>
+                        <button id="first-person" title="First Person View"><i class="fas fa-user"></i></button>
+                        <button id="reset-view" title="Reset View"><i class="fas fa-home"></i></button>
                     </div>
                 </div>
-
-                <div class="view-modes">
-                    <button class="view-mode-btn active">3D View</button>
-                    <button class="view-mode-btn">AR Preview</button>
-                    <button class="view-mode-btn">Room Scene</button>
-                </div>
-
-                <div class="model-info">
-                    <h4 style="margin-bottom: 15px;">Model Specifications</h4>
-                    <div class="model-specs">
-                        <div class="spec-item">
-                            <span class="spec-label">Polygons:</span>
-                            <span class="spec-value">25,482</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Textures:</span>
-                            <span class="spec-value">4K Resolution</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">File Size:</span>
-                            <span class="spec-value">8.7 MB</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Format:</span>
-                            <span class="spec-value">glTF 2.0</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">AR Support:</span>
-                            <span class="spec-value">iOS & Android</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Frame Rate:</span>
-                            <span class="spec-value">60 FPS</span>
-                        </div>
+                
+                <div class="product-thumbnails">
+                    <div class="thumbnail" data-view="default">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRlZmF1bHQgVmlldzwvdGV4dD4KPC9zdmc+" alt="Default View">
+                    </div>
+                    <div class="thumbnail" data-view="top">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRvcCBWaWV3PC90ZXh0Pgo8L3N2Zz4=" alt="Top View">
+                    </div>
+                    <div class="thumbnail" data-view="front">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyb250IFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Front View">
+                    </div>
+                    <div class="thumbnail" data-view="side">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpZGUgVmlldzwvdGV4dD4KPC9zdmc+" alt="Side View">
                     </div>
                 </div>
             </div>
 
-            <!-- Product Info Section -->
             <div class="product-info">
                 <h1>Tess Curved Sofa</h1>
                 
@@ -672,62 +651,52 @@
                     EMI starts from ₹ 16658.45 <a href="#" class="view-plans">View Plans</a>
                 </div>
 
-                <!-- AR Configuration Panel -->
-                <div class="ar-config-panel">
-                    <div class="config-header">
-                        <div class="ar-icon">AR</div>
-                        <h3>Live AR Configuration</h3>
-                    </div>
+                <div class="customization">
+                    <h3>Customise</h3>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 15px;">
+                        Note: Additional charges are applicable for the following services and products.*
+                    </p>
                     
-                    <div class="customization">
-                        <h4>Fabric Selection</h4>
-                        <p style="font-size: 13px; color: #666; margin-bottom: 15px;">
-                            Changes reflect in real-time in the AR preview above
-                        </p>
-                        
+                    <div>
+                        <p style="margin-bottom: 10px;"><strong>1. Fabric option: *Charlotte 300</strong></p>
                         <div class="fabric-options">
-                            <div class="fabric-option selected" data-fabric="charlotte300">
+                            <div class="fabric-option selected">
                                 <div class="fabric-swatch" style="background-color: #8B4513;"></div>
                                 <div class="fabric-name">Charlotte 300</div>
                                 <div class="made-to-order">Made to Order</div>
                                 <div class="extra-cost">+₹0</div>
                             </div>
-                            <div class="fabric-option" data-fabric="charlotte500">
+                            <div class="fabric-option">
                                 <div class="fabric-swatch" style="background-color: #556B2F;"></div>
                                 <div class="fabric-name">Charlotte 500</div>
                                 <div class="made-to-order">Made to Order</div>
                                 <div class="extra-cost">+₹0</div>
                             </div>
-                            <div class="fabric-option" data-fabric="charlotte902">
+                            <div class="fabric-option">
                                 <div class="fabric-swatch" style="background-color: #F5E6D3;"></div>
                                 <div class="fabric-name">Charlotte 902</div>
                                 <div class="made-to-order">Made to Order</div>
                                 <div class="extra-cost">+₹0</div>
                             </div>
-                            <div class="fabric-option" data-fabric="dullteak">
+                            <div class="fabric-option">
                                 <div class="fabric-swatch" style="background-color: #8B7355;"></div>
                                 <div class="fabric-name">Dull Teak</div>
                                 <div class="made-to-order">Made to Order</div>
                                 <div class="extra-cost">+₹0</div>
                             </div>
-                            <div class="fabric-option" data-fabric="carbonblack">
+                            <div class="fabric-option">
                                 <div class="fabric-swatch" style="background-color: #000000;"></div>
                                 <div class="fabric-name">Carbon Black</div>
                                 <div class="made-to-order">Made to Order</div>
                                 <div class="extra-cost">+₹0</div>
                             </div>
                         </div>
-
-                        <div class="realtime-indicator">
-                            <div class="pulse-dot"></div>
-                            <span>Real-time AR updates enabled</span>
-                        </div>
                     </div>
-                </div>
 
-                <p style="font-size: 14px; margin: 20px 0;">
-                    Shop now, and we'll dispatch your order within <strong>60 days</strong>
-                </p>
+                    <p style="font-size: 14px; margin-top: 20px;">
+                        Shop now, and we'll dispatch your order within <strong>60 days</strong>
+                    </p>
+                </div>
 
                 <div style="margin: 20px 0;">
                     <h4>Quantity</h4>
@@ -742,20 +711,12 @@
                     <button class="add-to-cart">₹158,900 Add To Cart</button>
                 </div>
 
-                <button class="ar-experience-btn">
-                    📱 Try in Your Space with AR
-                </button>
-
                 <div class="product-details">
                     <div class="detail-item">
                         <span class="detail-icon">📅</span>
                         <div>
                             <div><strong>Expected Dispatch Date:</strong> <span style="color: #28a745;">Oct 21, 2025</span></div>
                         </div>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-icon">🥽</span>
-                        <div><strong>AR/VR Ready</strong> - WebXR Compatible</div>
                     </div>
                     <div class="detail-item">
                         <span class="detail-icon">💬</span>
@@ -769,127 +730,132 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="share-section">
+                    <div><strong>Share:</strong></div>
+                    <div class="share-buttons">
+                        <button class="share-btn">f</button>
+                        <button class="share-btn">🐦</button>
+                        <button class="share-btn">📱</button>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <div class="description-section">
+            <div class="section-header">
+                <h3>Description</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="section-header">
+                <h3>Key Features</h3>
+                <span class="toggle-icon">+</span>
+            </div>
+        </div>
     </main>
 
+    <!-- Chat Widgets -->
+    <div class="offline-widget">
+        We're offline<br>
+        <small>Leave a message</small>
+    </div>
+    <div class="chat-widget">💬</div>
+
     <script>
-        // Enhanced interactivity for AR integration
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fabric option selection with AR updates
-            document.querySelectorAll('.fabric-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    document.querySelectorAll('.fabric-option').forEach(o => o.classList.remove('selected'));
-                    this.classList.add('selected');
-                    
-                    // Simulate AR model update
-                    const fabric = this.dataset.fabric;
-                    updateARModel(fabric);
-                    showUpdateFeedback();
-                });
-            });
-
-            // View mode switching
-            document.querySelectorAll('.view-mode-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.view-mode-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update viewer based on mode
-                    const mode = this.textContent;
-                    updateViewerMode(mode);
-                });
-            });
-
-            // Quantity controls
-            document.querySelectorAll('.quantity-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const input = this.parentNode.querySelector('.quantity-input');
-                    const isIncrement = this.textContent === '+';
-                    let value = parseInt(input.value);
-                    
-                    if (isIncrement) {
-                        value++;
-                    } else if (value > 1) {
-                        value--;
-                    }
-                    
-                    input.value = value;
-                });
-            });
-
-            // AR Experience button
-            document.querySelector('.ar-experience-btn').addEventListener('click', function() {
-                launchARExperience();
-            });
-
-            // AR controls
-            document.querySelectorAll('.ar-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const title = this.getAttribute('title');
-                    handleARControl(title);
-                });
-            });
-
-            // Close banner
-            document.querySelector('.close-banner').addEventListener('click', function() {
-                document.querySelector('.top-banner').style.display = 'none';
+        // Basic interactivity
+        document.querySelectorAll('.fabric-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.fabric-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
             });
         });
 
-        // AR Integration Functions
-        function updateARModel(fabricType) {
-            console.log(`Updating AR model with fabric: ${fabricType}`);
-            // Here you would integrate with your 3D model library
-            // For example: modelViewer.updateMaterial(fabricType);
-        }
+        document.querySelectorAll('.quantity-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.parentNode.querySelector('.quantity-input');
+                const isIncrement = this.textContent === '+';
+                let value = parseInt(input.value);
+                
+                if (isIncrement) {
+                    value++;
+                } else if (value > 1) {
+                    value--;
+                }
+                
+                input.value = value;
+            });
+        });
 
-        function updateViewerMode(mode) {
-            const viewer = document.querySelector('.ar-viewer');
-            const placeholder = viewer.querySelector('.model-placeholder div');
+        document.querySelector('.close-banner').addEventListener('click', function() {
+            document.querySelector('.top-banner').style.display = 'none';
+        });
+
+        document.querySelectorAll('.section-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const icon = this.querySelector('.toggle-icon');
+                icon.textContent = icon.textContent === '+' ? '−' : '+';
+            });
+        });
+
+        // 3D Model Viewer Functionality
+        const modelViewer = document.querySelector('model-viewer');
+        
+        // Simulate loading progress
+        const progressBar = document.querySelector('.update-bar');
+        let progress = 0;
+        
+        const loadingInterval = setInterval(() => {
+            progress += Math.random() * 10;
+            progressBar.style.width = `${progress}%`;
             
-            switch(mode) {
-                case '3D View':
-                    placeholder.innerHTML = '<div style="font-size: 24px; margin-bottom: 10px;">🪑</div><div>Interactive 3D Model</div><div style="font-size: 14px; opacity: 0.8; margin-top: 5px;">Rotate • Zoom • Pan</div>';
-                    break;
-                case 'AR Preview':
-                    placeholder.innerHTML = '<div style="font-size: 24px; margin-bottom: 10px;">📱</div><div>AR Preview Mode</div><div style="font-size: 14px; opacity: 0.8; margin-top: 5px;">Preview in your space</div>';
-                    break;
-                case 'Room Scene':
-                    placeholder.innerHTML = '<div style="font-size: 24px; margin-bottom: 10px;">🏠</div><div>Room Context</div><div style="font-size: 14px; opacity: 0.8; margin-top: 5px;">See in sample room</div>';
-                    break;
+            if (progress >= 100) {
+                clearInterval(loadingInterval);
             }
-        }
-
-        function launchARExperience() {
-            alert('Launching AR experience...\n\nThis would open your device camera and place the 3D model in your real environment.');
-            // Integration with WebXR or ARCore/ARKit
-        }
-
-        function handleARControl(action) {
-            switch(action) {
-                case 'Fullscreen':
-                    console.log('Entering fullscreen mode');
-                    break;
-                case 'Reset View':
-                    console.log('Resetting 3D view');
-                    break;
-                case 'Share':
-                    console.log('Opening share dialog');
-                    break;
-            }
-        }
-
-        function showUpdateFeedback() {
-            const indicator = document.querySelector('.realtime-indicator');
-            indicator.style.background = '#007bff';
-            indicator.innerHTML = '<div class="pulse-dot"></div><span>Updating AR model...</span>';
-            
+        }, 300);
+        
+        // Listen for actual model load event
+        modelViewer.addEventListener('load', () => {
+            clearInterval(loadingInterval);
+            progressBar.style.width = '100%';
             setTimeout(() => {
-                indicator.style.background = '#28a745';
-                indicator.innerHTML = '<div class="pulse-dot"></div><span>Real-time AR updates enabled</span>';
-            }, 1500);
-        }
+                document.querySelector('.progress-bar').classList.add('hide');
+            }, 500);
+        });
+        
+        // View controls
+        document.getElementById('reset-view').addEventListener('click', () => {
+            modelViewer.cameraOrbit = '0deg 75deg 3m';
+            modelViewer.fieldOfView = '20.27deg';
+        });
+        
+        document.getElementById('orbit-control').addEventListener('click', () => {
+            modelViewer.cameraOrbit = '0deg 75deg 3m';
+        });
+        
+        document.getElementById('first-person').addEventListener('click', () => {
+            modelViewer.cameraOrbit = '0deg 90deg 1.5m';
+        });
+        
+        // Thumbnail click handlers for different views
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const view = this.getAttribute('data-view');
+                
+                switch(view) {
+                    case 'top':
+                        modelViewer.cameraOrbit = '90deg 90deg 3m';
+                        break;
+                    case 'front':
+                        modelViewer.cameraOrbit = '0deg 90deg 3m';
+                        break;
+                    case 'side':
+                        modelViewer.cameraOrbit = '0deg 0deg 3m';
+                        break;
+                    default:
+                        modelViewer.cameraOrbit = '0deg 75deg 3m';
+                }
+            });
+        });
     </script>
 </body>
 </html>
