@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tess Curved Sofa - DTALE MODERN</title>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -156,31 +156,6 @@
             color: #f0b90b;
         }
 
-        /* View Toggle */
-        .view-toggle {
-            display: flex;
-            margin-bottom: 15px;
-            background: #f0f0f0;
-            border-radius: 8px;
-            padding: 4px;
-            width: fit-content;
-        }
-
-        .view-toggle button {
-            padding: 8px 16px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .view-toggle button.active {
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
         /* Product Section */
         .product-section {
             display: grid;
@@ -193,66 +168,6 @@
             position: relative;
         }
 
-        .main-image {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .new-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #000;
-            color: white;
-            padding: 5px 10px;
-            font-size: 12px;
-            border-radius: 3px;
-            z-index: 10;
-        }
-
-        .wishlist-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: white;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            z-index: 10;
-            transition: all 0.3s;
-        }
-
-        .wishlist-btn:hover {
-            background: #f8f8f8;
-            transform: scale(1.05);
-        }
-
-        .product-thumbnails {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .thumbnail {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .thumbnail:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
         /* 3D Model Viewer Styles */
         .model-viewer-container {
             position: relative;
@@ -262,6 +177,7 @@
             overflow: hidden;
             background: #f5f5f5;
             display: block;
+            margin-bottom: 20px;
         }
 
         model-viewer {
@@ -299,28 +215,6 @@
             transform: scale(1.1);
         }
 
-        .progress-bar {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            max-width: 400px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            z-index: 10;
-        }
-
-        .update-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(to right, #1a2a6c, #b21f1f);
-            border-radius: 10px;
-            transition: width 0.3s ease;
-        }
-
         .ar-button {
             position: absolute;
             bottom: 20px;
@@ -346,54 +240,44 @@
             transform: translateY(-2px);
         }
 
-        /* Image Gallery */
-        .image-gallery {
-            display: none;
-            position: relative;
-        }
-
-        .gallery-main {
-            width: 100%;
-            height: 500px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .gallery-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.5s;
-        }
-
-        .gallery-nav {
+        .wishlist-btn {
             position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 20px;
-            z-index: 5;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+            transition: all 0.3s;
         }
 
-        .gallery-nav button {
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .wishlist-btn:hover {
+            background: #f8f8f8;
+            transform: scale(1.05);
+        }
+
+        /* Thumbnails */
+        .product-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
         }
 
-        .gallery-nav button:hover {
-            background: white;
-            transform: scale(1.1);
+        .thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         /* Product Info */
@@ -785,7 +669,7 @@
                 max-width: none;
             }
             
-            .model-viewer-container, .gallery-main {
+            .model-viewer-container {
                 height: 400px;
             }
             
@@ -832,15 +716,6 @@
             
             .ar-button {
                 bottom: 70px;
-            }
-            
-            .gallery-nav {
-                padding: 0 10px;
-            }
-            
-            .gallery-nav button {
-                width: 35px;
-                height: 35px;
             }
         }
     </style>
@@ -905,12 +780,6 @@
         <!-- Product Section -->
         <section class="product-section">
             <div class="product-images">
-                <!-- View Toggle -->
-                <div class="view-toggle">
-                    <button id="view-3d" class="active">3D View</button>
-                    <button id="view-gallery">Image Gallery</button>
-                </div>
-                
                 <!-- 3D Viewer -->
                 <div class="model-viewer-container">
                     <model-viewer 
@@ -928,53 +797,24 @@
                         field-of-view="20.27deg"
                         alt="Tess Curved Sofa 3D Model">
                         
-                        <div class="progress-bar" slot="progress-bar">
-                            <div class="update-bar"></div>
-                        </div>
-                        
                         <button slot="ar-button" class="ar-button">
                             <i class="fas fa-mobile-alt"></i> View in AR
                         </button>
                     </model-viewer>
                     
-                    <div class="new-badge">3D VIEW</div>
                     <button class="wishlist-btn">♡</button>
                     
                     <div class="viewer-controls">
-                        <button id="orbit-control" title="Orbit Mode"><i class="fas fa-sync"></i></button>
-                        <button id="first-person" title="First Person View"><i class="fas fa-user"></i></button>
                         <button id="reset-view" title="Reset View"><i class="fas fa-home"></i></button>
                     </div>
                 </div>
                 
-                <!-- Image Gallery -->
-                <div class="image-gallery">
-                    <div class="gallery-main">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRlc3MgQ3VydmVkIFNvZmEgLSBNYWluIFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Tess Curved Sofa Main View" id="gallery-main-img">
-                        <div class="gallery-nav">
-                            <button id="gallery-prev"><i class="fas fa-chevron-left"></i></button>
-                            <button id="gallery-next"><i class="fas fa-chevron-right"></i></button>
-                        </div>
-                    </div>
-                    
-                    <div class="new-badge" style="top: 60px;">GALLERY</div>
-                    <button class="wishlist-btn">♡</button>
-                </div>
-                
                 <!-- Thumbnails -->
                 <div class="product-thumbnails">
-                    <div class="thumbnail" data-view="default">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRlZmF1bHQgVmlldzwvdGV4dD4KPC9zdmc+" alt="Default View">
-                    </div>
-                    <div class="thumbnail" data-view="top">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9y=" alt="Top View">
-                    </div>
-                    <div class="thumbnail" data-view="front">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyb250IFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Front View">
-                    </div>
-                    <div class="thumbnail" data-view="side">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZ illbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpZGUgVmlldzwvdGV4dD4KPC9zdmc+" alt="Side View">
-                    </div>
+                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRlZmF1bHQgVmlldzwvdGV4dD4KPC9zdmc+" alt="Default View" data-orbit="0deg 75deg 3m">
+                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyb250IFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Front View" data-orbit="0deg 90deg 3m">
+                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpZGUgVmlldzwvdGV4dD4KPC9zdmc+" alt="Side View" data-orbit="0deg 0deg 3m">
+                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNsb3NldXAgVmlldzwvdGV4dD4KPC9zdmc+" alt="Closeup View" data-orbit="0deg 75deg 1.5m">
                 </div>
             </div>
 
@@ -1212,112 +1052,24 @@
         // 3D Model Viewer Functionality
         const modelViewer = document.querySelector('model-viewer');
         
-        // Simulate loading progress
-        const progressBar = document.querySelector('.update-bar');
-        let progress = 0;
-        
-        const loadingInterval = setInterval(() => {
-            progress += Math.random() * 10;
-            progressBar.style.width = `${progress}%`;
-            
-            if (progress >= 100) {
-                clearInterval(loadingInterval);
-            }
-        }, 300);
-        
-        // Listen for actual model load event
-        modelViewer.addEventListener('load', () => {
-            clearInterval(loadingInterval);
-            progressBar.style.width = '100%';
-            setTimeout(() => {
-                document.querySelector('.progress-bar').classList.add('hide');
-            }, 500);
-        });
-        
-        // View controls
+        // Reset view button
         document.getElementById('reset-view').addEventListener('click', () => {
             modelViewer.cameraOrbit = '0deg 75deg 3m';
             modelViewer.fieldOfView = '20.27deg';
         });
         
-        document.getElementById('orbit-control').addEventListener('click', () => {
-            modelViewer.cameraOrbit = '0deg 75deg 3m';
-        });
-        
-        document.getElementById('first-person').addEventListener('click', () => {
-            modelViewer.cameraOrbit = '0deg 90deg 1.5m';
-        });
-        
         // Thumbnail click handlers for different views
         document.querySelectorAll('.thumbnail').forEach(thumb => {
             thumb.addEventListener('click', function() {
-                const view = this.getAttribute('data-view');
-                
-                switch(view) {
-                    case 'top':
-                        modelViewer.cameraOrbit = '90deg 90deg 3m';
-                        break;
-                    case 'front':
-                        modelViewer.cameraOrbit = '0deg 90deg 3m';
-                        break;
-                    case 'side':
-                        modelViewer.cameraOrbit = '0deg 0deg 3m';
-                        break;
-                    default:
-                        modelViewer.cameraOrbit = '0deg 75deg 3m';
-                }
+                const orbit = this.getAttribute('data-orbit');
+                modelViewer.cameraOrbit = orbit;
             });
         });
 
-        // View toggle functionality
-        const view3DButton = document.getElementById('view-3d');
-        const viewGalleryButton = document.getElementById('view-gallery');
-        const modelViewerContainer = document.querySelector('.model-viewer-container');
-        const imageGallery = document.querySelector('.image-gallery');
-        
-        view3DButton.addEventListener('click', function() {
-            this.classList.add('active');
-            viewGalleryButton.classList.remove('active');
-            modelViewerContainer.style.display = 'block';
-            imageGallery.style.display = 'none';
+        // Wishlist button
+        document.querySelector('.wishlist-btn').addEventListener('click', function() {
+            this.textContent = this.textContent === '♡' ? '♥' : '♡';
         });
-        
-        viewGalleryButton.addEventListener('click', function() {
-            this.classList.add('active');
-            view3DButton.classList.remove('active');
-            modelViewerContainer.style.display = 'none';
-            imageGallery.style.display = 'block';
-        });
-
-        // Image gallery navigation
-        const galleryImages = [
-            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRlc3MgQ3VydmVkIFNvZmEgLSBNYWluIFZpZXc8L3RleHQ+Cjwvc3ZnPg==',
-            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNvZmEgRnJvbSBBYm92ZTwvdGV4dD4KPC9zdmc+',
-            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNvZmEgSW4gTGl2aW5nIFJvb208L3RleHQ+Cjwvc3ZnPg==',
-            'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNsb3NldXAgRGV0YWlsPC90ZXh0Pgo8L3N2Zz4='
-        ];
-        
-        let currentImageIndex = 0;
-        const galleryMainImg = document.getElementById('gallery-main-img');
-        const galleryPrev = document.getElementById('gallery-prev');
-        const galleryNext = document.getElementById('gallery-next');
-        
-        function updateGalleryImage() {
-            galleryMainImg.src = galleryImages[currentImageIndex];
-        }
-        
-        galleryPrev.addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-            updateGalleryImage();
-        });
-        
-        galleryNext.addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-            updateGalleryImage();
-        });
-        
-        // Initialize gallery
-        updateGalleryImage();
     </script>
 </body>
 </html>
