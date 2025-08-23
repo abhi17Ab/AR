@@ -186,35 +186,6 @@
             --progress-bar-color: transparent;
         }
 
-        .viewer-controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            border-radius: 50px;
-        }
-
-        .viewer-controls button {
-            background: none;
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-
-        .viewer-controls button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
         .ar-button {
             position: absolute;
             bottom: 20px;
@@ -222,22 +193,24 @@
             background: #000;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 15px 25px;
             border-radius: 50px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 10;
             transition: all 0.3s;
         }
 
         .ar-button:hover {
-            background: #333;
-            transform: translateY(-2px);
+            background: #f0b90b;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
         .wishlist-btn {
@@ -246,17 +219,19 @@
             right: 20px;
             background: white;
             border: none;
-            padding: 10px;
+            padding: 12px;
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             z-index: 10;
             transition: all 0.3s;
+            font-size: 18px;
         }
 
         .wishlist-btn:hover {
             background: #f8f8f8;
-            transform: scale(1.05);
+            transform: scale(1.1);
+            color: #e60000;
         }
 
         /* Thumbnails */
@@ -710,12 +685,11 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .viewer-controls {
-                bottom: 70px;
-            }
-            
             .ar-button {
-                bottom: 70px;
+                padding: 12px 20px;
+                font-size: 16px;
+                bottom: 15px;
+                right: 15px;
             }
         }
     </style>
@@ -798,21 +772,17 @@
                         alt="Tess Curved Sofa 3D Model">
                         
                         <button slot="ar-button" class="ar-button">
-                            <i class="fas fa-mobile-alt"></i> View in AR
+                            <i class="fas fa-vr-cardboard"></i> View in AR
                         </button>
                     </model-viewer>
                     
                     <button class="wishlist-btn">♡</button>
-                    
-                    <div class="viewer-controls">
-                        <button id="reset-view" title="Reset View"><i class="fas fa-home"></i></button>
-                    </div>
                 </div>
                 
                 <!-- Thumbnails -->
                 <div class="product-thumbnails">
                     <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRlZmF1bHQgVmlldzwvdGV4dD4KPC9zdmc+" alt="Default View" data-orbit="0deg 75deg 3m">
-                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyb250IFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Front View" data-orbit="0deg 90deg 3m">
+                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIi IGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyb250IFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Front View" data-orbit="0deg 90deg 3m">
                     <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpZGUgVmlldzwvdGV4dD4KPC9zdmc+" alt="Side View" data-orbit="0deg 0deg 3m">
                     <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNsb3NldXAgVmlldzwvdGV4dD4KPC9zdmc+" alt="Closeup View" data-orbit="0deg 75deg 1.5m">
                 </div>
@@ -1051,12 +1021,6 @@
 
         // 3D Model Viewer Functionality
         const modelViewer = document.querySelector('model-viewer');
-        
-        // Reset view button
-        document.getElementById('reset-view').addEventListener('click', () => {
-            modelViewer.cameraOrbit = '0deg 75deg 3m';
-            modelViewer.fieldOfView = '20.27deg';
-        });
         
         // Thumbnail click handlers for different views
         document.querySelectorAll('.thumbnail').forEach(thumb => {
