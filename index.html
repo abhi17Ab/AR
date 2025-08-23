@@ -692,6 +692,24 @@
                 right: 15px;
             }
         }
+
+        /* AR compatibility message */
+        .ar-compatibility {
+            display: none;
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            z-index: 10;
+            width: 80%;
+            max-width: 400px;
+        }
     </style>
 </head>
 <body>
@@ -758,23 +776,34 @@
                 <div class="model-viewer-container">
                     <model-viewer 
                         src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-                        ar 
-                        ar-modes="webxr scene-viewer quick-look" 
-                        camera-controls 
+                        ios-src="https://modelviewer.dev/shared-assets/models/Astronaut.usdz"
+                        ar
+                        ar-modes="webxr scene-viewer quick-look"
+                        camera-controls
                         tone-mapping="neutral"
-                        shadow-intensity="1.19" 
-                        autoplay 
+                        shadow-intensity="1.19"
+                        autoplay
                         environment-image="neutral"
-                        exposure="0.72" 
-                        shadow-softness="1" 
-                        camera-orbit="0deg 75deg 3m" 
+                        exposure="0.72"
+                        shadow-softness="1"
+                        camera-orbit="0deg 75deg 3m"
                         field-of-view="20.27deg"
+                        ar-scale="fixed"
+                        ar-placement="floor"
                         alt="Tess Curved Sofa 3D Model">
                         
                         <button slot="ar-button" class="ar-button">
                             <i class="fas fa-vr-cardboard"></i> View in AR
                         </button>
+                        <div id="ar-prompt">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDExLjVWMTYuNU0xMiA3LjVWMTAuNU0xMiAyMS4wMDYyQzE2Ljc0ODQgMjEuMDA2MiAyMC42IDE3LjE1NDYgMjAuNiAxMi40MDYyQzIwLjYgNy42NTc4MSAxNi43NDg0IDMuODA2MjUgMTIgMy44MDYyNUM3LjI1MTU2IDMuODA2MjUgMy40IDcuNjU3ODEgMy40IDEyLjQwNjJDMy40IDE3LjE1NDYgNy4yNTE1NiAyMS4wMDYyIDEyIDIxLjAwNjJaIiBzdHJva2U9IiNGRkYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTE3LjUgOC41QzE3LjUgMTAuMTU2OSAxNi4xNTY5IDExLjUgMTQuNSAxMS41QzE0LjUgMTMuMTU2OSAxMy4xNTY5IDE0LjUgMTEuNSAxNC41QzkuODQzMTUgMTQuNSA4LjUgMTMuMTU2OSA4LjUgMTEuNUM4LjUgOS44NDMxNSA5Ljg0MzE1IDguNSAxMS41IDguNUMxMy4xNTY5IDguNSAxNC41IDkuODQzMTUgMTQuNSAxMS41IiBzdHJva2U9IiNGRkYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+" alt="AR icon">
+                            View in your space
+                        </div>
                     </model-viewer>
+                    
+                    <div class="ar-compatibility" id="ar-compatibility">
+                        AR not available on this device. Try opening on a mobile device.
+                    </div>
                     
                     <button class="wishlist-btn">♡</button>
                 </div>
@@ -782,9 +811,9 @@
                 <!-- Thumbnails -->
                 <div class="product-thumbnails">
                     <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRlZmF1bHQgVmlldzwvdGV4dD4KPC9zdmc+" alt="Default View" data-orbit="0deg 75deg 3m">
-                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIi IGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyb250IFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Front View" data-orbit="0deg 90deg 3m">
-                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpZGUgVmlldzwvdGV4dD4KPC9zdmc+" alt="Side View" data-orbit="0deg 0deg 3m">
-                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNsb3NldXAgVmlldzwvdGV4dD4KPC9zdmc+" alt="Closeup View" data-orbit="0deg 75deg 1.5m">
+                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZyb250IFZpZXc8L3RleHQ+Cjwvc3ZnPg==" alt="Front View" data-orbit="0deg 90deg 3m">
+                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9y=" alt="Top View" data-orbit="90deg 90deg 3m">
+                    <img class="thumbnail" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDA/c3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpZGUgVmlldzwvdGV4dD4KPC9zdmc+" alt="Side View" data-orbit="0deg 0deg 3m">
                 </div>
             </div>
 
@@ -1021,6 +1050,27 @@
 
         // 3D Model Viewer Functionality
         const modelViewer = document.querySelector('model-viewer');
+        const arCompatibility = document.getElementById('ar-compatibility');
+        
+        // Check AR compatibility
+        function checkARSupport() {
+            const sceneViewerSupported = 'onsceneready' in window;
+            const webXrSupported = navigator.xr && navigator.xr.isSessionSupported;
+            const quickLookSupported = () => {
+                return /iPhone|iPad|iPod/.test(navigator.userAgent) && 
+                      /AppleWebKit/.test(navigator.userAgent) && 
+                      !/CriOS/.test(navigator.userAgent);
+            };
+            
+            if (!sceneViewerSupported && !webXrSupported && !quickLookSupported()) {
+                arCompatibility.style.display = 'block';
+            }
+        }
+        
+        // Check AR support after model loads
+        modelViewer.addEventListener('load', () => {
+            checkARSupport();
+        });
         
         // Thumbnail click handlers for different views
         document.querySelectorAll('.thumbnail').forEach(thumb => {
@@ -1034,6 +1084,14 @@
         document.querySelector('.wishlist-btn').addEventListener('click', function() {
             this.textContent = this.textContent === '♡' ? '♥' : '♡';
         });
+
+        // Handle AR button visibility for unsupported devices
+        setTimeout(() => {
+            const arButton = document.querySelector('[slot="ar-button"]');
+            if (arButton && arButton.offsetParent === null) {
+                arCompatibility.style.display = 'block';
+            }
+        }, 3000);
     </script>
 </body>
 </html>
